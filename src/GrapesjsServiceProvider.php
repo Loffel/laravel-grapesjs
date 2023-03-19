@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotlogics\Grapesjs;
+namespace Loffel\Grapesjs;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
@@ -36,7 +36,7 @@ class GrapesjsServiceProvider extends ServiceProvider
         $this->setupRoutes($this->app->router);
 
         if ($this->app->runningInConsole()) {
-            $this->publishFiles();            
+            $this->publishFiles();
         }
 
         $this->setupViewDirectives();
@@ -82,19 +82,19 @@ class GrapesjsServiceProvider extends ServiceProvider
     protected function setupViewDirectives()
     {
         //To Handle error if there no icon defined for any template
-        $this->app->singleton('template-icon', function($app){ 
+        $this->app->singleton('template-icon', function($app){
             return new class {
                 public function url(){}
-            }; 
+            };
         });
 
         Blade::directive('templateIcon', function ($args) {
             $args = Blade::stripParentheses($args);
 
-            return "<?php \$app->singleton('template-icon', function(\$app){ 
+            return "<?php \$app->singleton('template-icon', function(\$app){
                 return new class {
                     protected \$called = false;
-                
+
                     public function url() {
                         if(\$this->called) return null;
 

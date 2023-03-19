@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotlogics\Grapesjs\App\Repositories;
+namespace Loffel\Grapesjs\App\Repositories;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -50,7 +50,7 @@ class AssetRepository
         if (!is_array($files)){
             $files = [$files];
         }
-        
+
         $uploaded_files = [];
 
         foreach ($files as $file) {

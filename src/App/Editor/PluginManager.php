@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotlogics\Grapesjs\App\Editor;
+namespace Loffel\Grapesjs\App\Editor;
 
 class PluginManager
 {
@@ -13,22 +13,22 @@ class PluginManager
      * @var array|bool
      */
     public $bootstrap4Blocks = false;
-    
+
     /**
      * @var array|bool
      */
     public $codeEditor = false;
-    
+
     /**
      * @var array|bool
      */
     public $imageEditor = false;
-    
+
     /**
      * @var array|bool
      */
     public $templates = false;
-    
+
     public array $customFonts = [];
     public array $pluginsLoader = [];
 

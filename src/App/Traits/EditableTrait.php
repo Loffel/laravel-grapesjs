@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotlogics\Grapesjs\App\Traits;
+namespace Loffel\Grapesjs\App\Traits;
 
 use DOMDocument;
 
@@ -50,11 +50,11 @@ trait EditableTrait{
             libxml_use_internal_errors(TRUE);
             $dom->loadHTML("<$placeholder />");
             libxml_use_internal_errors(FALSE);
-            
+
             $body = $dom->documentElement->firstChild;
             $placeholder = $body->childNodes[0];
             $length = $placeholder->attributes->length;
-            
+
             for ($i = 0; $i < $length; ++$i) {
                 $name = $placeholder->attributes->item($i)->name;
                 $value = $placeholder->getAttribute($name);
@@ -80,7 +80,7 @@ trait EditableTrait{
 
         foreach ($placeholders as $_placeholder) {
             if(empty($this->placeholders[$_placeholder])){
-                $placeholder = str_replace(['[[', ']]'], '', $_placeholder);                
+                $placeholder = str_replace(['[[', ']]'], '', $_placeholder);
                 $attributes = $this->getPlaceholderAttributes($placeholder);
 
                 $view = preg_split('/[\s]+/', $placeholder);
@@ -117,11 +117,14 @@ trait EditableTrait{
 
     public function getComponentsAttribute() : array
     {
-        return json_decode($this->gjs_data['components'] ?? '[]');
+//        dd(json_decode($this->gjs_data['components'] ?? '[]', true));
+//        return $this->gjs_data['pages'][0]['frames'][0]['component'];
+        return json_decode($this->gjs_data['components'] ?? '[]', true);
     }
 
     public function getStylesAttribute(): array
     {
+        return $this->gjs_data['styles'] ?? [];
         return json_decode($this->gjs_data['styles'] ?? '[]');
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotlogics\Grapesjs\App\Editor;
+namespace Loffel\Grapesjs\App\Editor;
 
 class StyleManager
 {
@@ -9,6 +9,6 @@ class StyleManager
         if(config('laravel-grapesjs.style_manager.limited_selectors', false)){
             $this->sectors = [];
         }
-        
+
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dotlogics\Grapesjs\App\Editor;
+namespace Loffel\Grapesjs\App\Editor;
 
-use Dotlogics\Grapesjs\App\Repositories\AssetRepository;
+use Loffel\Grapesjs\App\Repositories\AssetRepository;
 
 class AssetManager
 {
@@ -21,7 +21,7 @@ class AssetManager
     function __construct(AssetRepository $assetRepository)
     {
         $this->headers['X-CSRF-TOKEN'] = csrf_token();
-        $this->upload = $assetRepository->getUploadUrl();    
+        $this->upload = $assetRepository->getUploadUrl();
         $this->uploadName = 'file';
 
         $this->assets = $assetRepository->getAllMediaLinks();

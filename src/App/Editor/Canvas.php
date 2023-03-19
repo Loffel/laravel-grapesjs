@@ -1,6 +1,6 @@
 <?php
 
-namespace Dotlogics\Grapesjs\App\Editor;
+namespace Loffel\Grapesjs\App\Editor;
 
 class Canvas
 {
@@ -38,7 +38,7 @@ class Canvas
     public function mergeStyles($styles)
     {
         $this->styles = array_merge($this->styles, $this->mapScriptsUrls($styles));
-        
+
         return $this;
     }
 

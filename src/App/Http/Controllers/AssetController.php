@@ -1,11 +1,11 @@
 <?php
 
-namespace Dotlogics\Grapesjs\App\Http\Controllers;
+namespace Loffel\Grapesjs\App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Dotlogics\Grapesjs\App\Repositories\AssetRepository;
+use Loffel\Grapesjs\App\Repositories\AssetRepository;
 
 class AssetController extends Controller
 {

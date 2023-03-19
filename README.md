@@ -3,7 +3,7 @@ This package provide an esay way to integrate [GrapesJS](https://grapesjs.com/) 
 
 ## Installation
 
->`composer require jd-dotlogics/laravel-grapesjs`
+>`composer require loffel/laravel-grapesjs`
 
 
 ## Publish files & migrate
@@ -19,8 +19,8 @@ This package provide an esay way to integrate [GrapesJS](https://grapesjs.com/) 
 2. Implement Editable Interface and use the EditableTrait trait for the Model class 
 ```php
 use Illuminate\Database\Eloquent\Model;
-use Dotlogics\Grapesjs\App\Traits\EditableTrait;
-use Dotlogics\Grapesjs\App\Contracts\Editable;
+use Loffel\Grapesjs\App\Traits\EditableTrait;
+use Loffel\Grapesjs\App\Contracts\Editable;
 
 class Page extends Model implements Editable
 {
@@ -44,7 +44,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
-use Dotlogics\Grapesjs\App\Traits\EditorTrait;
+use Loffel\Grapesjs\App\Traits\EditorTrait;
 
 class PageController extends Controller
 {

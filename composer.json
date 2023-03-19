@@ -1,6 +1,6 @@
 {
-    "name": "jd-dotlogics/laravel-grapesjs",
-    "description": "A package to easily integrate GrapesJS into your laravel proejct.",
+    "name": "loffel/laravel-grapesjs",
+    "description": "A package to easily integrate GrapesJS into your laravel project.",
     "type": "library",
     "require": {
         "php": "^7.4|^8.0",
@@ -11,17 +11,21 @@
         {
             "name": "Dotlogics",
             "email": "hello@dotlogics.com"
+        },
+        {
+            "name": "Loffel",
+            "email": "andrewcreym@gmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Dotlogics\\Grapesjs\\": "src"
+            "Loffel\\Grapesjs\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Dotlogics\\Grapesjs\\GrapesjsServiceProvider"
+                "Loffel\\Grapesjs\\GrapesjsServiceProvider"
             ]
         }
     },

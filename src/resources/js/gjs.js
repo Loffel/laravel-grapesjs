@@ -1,5 +1,5 @@
 import grapesjs from 'grapesjs';
-import 'grapesjs-blocks-basic';
+import pluginBlocks from 'grapesjs-blocks-basic';
 import 'grapesjs-blocks-bootstrap4';
 import CodeEditor from "./plugins/code-editor"
 import ExtraButtons from "./plugins/extra-buttons"
@@ -24,7 +24,7 @@ let plugins = []
 let pluginsOpts = {}
 
 if(config.pluginManager.basicBlocks){
-	plugins.push('gjs-blocks-basic')
+	plugins.push(pluginBlocks)
 	pluginsOpts['gjs-blocks-basic'] = config.pluginManager.basicBlocks;
 }
 
@@ -83,7 +83,22 @@ pluginsOpts = {
 config.plugins = plugins
 config.pluginsOpts = pluginsOpts
 
-let editor = grapesjs.init(config);
+config.styleManager = {}
+
+config.storageManager.options.remote.onStore = (storeData, gEditor) => {
+	const projectData = gEditor.getProjectData()
+	const editorComponents = JSON.stringify(projectData.pages[0].frames[0].component)
+
+	return {
+		'assets': JSON.stringify(projectData.assets),
+		'css': gEditor.getCss(),
+		'html': gEditor.getHtml(),
+		'components': editorComponents,
+		'styles': projectData.styles
+	}
+}
+
+window.grapeeditor = grapesjs.init(config);
 
 if(config.exposeApi){
 	Object.defineProperty(window, 'gjsEditor', {

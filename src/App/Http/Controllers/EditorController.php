@@ -1,12 +1,12 @@
 <?php
 
-namespace Dotlogics\Grapesjs\App\Http\Controllers;
+namespace Loffel\Grapesjs\App\Http\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
-use Dotlogics\Grapesjs\App\Traits\EditorTrait;
+use Loffel\Grapesjs\App\Traits\EditorTrait;
 use Illuminate\Support\Facades\View;
 
 class EditorController extends Controller
@@ -15,7 +15,7 @@ class EditorController extends Controller
 
     public function __construct(Request $request){
         $model = $request->route()->parameters['model'] ?? null;
-        
+
         if(!empty($model)){
             $request->route()->setParameter('model',  str_replace('-', '\\', $model));
         }
@@ -25,7 +25,7 @@ class EditorController extends Controller
     {
         return $this->show_gjs_editor($request, $model::findOrFail($id));
     }
-    
+
     public function store(Request $request, $model, $id)
     {
         return $this->store_gjs_data($request, $model::findOrFail($id));
@@ -43,7 +43,7 @@ class EditorController extends Controller
                 $type = Str::of($type);
                 $base_path_package_views = __DIR__ . '/../../../resources/views/';
                 $base_path_project_views = resource_path('views/vendor/laravel-grapesjs/');
-                
+
                 $path_getter_method = "get" . $type->studly() . 'Path';
 
                 if(method_exists($model, $path_getter_method)){
@@ -76,7 +76,7 @@ class EditorController extends Controller
                         rtrim($base_path_package_views, '/'),
                         rtrim($base_path_project_views, '/'),
                     ], '');
-                    
+
                     if(!empty('' . $view_base)){
                         $view_base .= '.';
                     }
