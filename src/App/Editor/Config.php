@@ -9,6 +9,10 @@ class Config
     //Global styles and scripts
     public array $styles = [];
     public array $scripts = [];
+    public array $locales = [];
+
+    // Locales
+    public array $i18n;
 
     // General
     public bool $exposeApi = false;
@@ -29,9 +33,13 @@ class Config
     public AssetManager $assetManager;
     public StyleManager $styleManager;
 
+    public array $selectorManager = [];
+
     function __construct(){
         $this->exposeApi = config('laravel-grapesjs.expose_api', false);
         $this->forceClass = config('laravel-grapesjs.force_class', false);
+        $this->i18n = config('laravel-grapesjs.i18n', []);
+        $this->selectorManager = config('laravel-grapesjs.selectorManager', []);
     }
 
     public function initialize(Editable $editable)
@@ -60,7 +68,7 @@ class Config
 
     protected function initStylesAndScripts()
     {
-        collect(['styles', 'scripts'])
+        collect(['styles', 'scripts', 'locales'])
             ->each(function($type){
                 $items = config("laravel-grapesjs.{$type}", []);
                 $items = collect($items)->filter()->values()->toArray();
@@ -81,6 +89,11 @@ class Config
         $extraScripts = $this->pluginManager ? $this->pluginManager->getPluginScripts() : [];
 
         return [...$extraScripts, ...$this->scripts];
+    }
+
+    public function getLocales()
+    {
+        return $this->locales;
     }
 
     public function toJson()

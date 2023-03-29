@@ -44,4 +44,6 @@
 
 /*! grapesjs-blocks-bootstrap4 - 0.2.3 */
 
+/*! grapesjs-touch - 0.1.1 */
+
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */

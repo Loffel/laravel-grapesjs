@@ -77,9 +77,13 @@
 
 <body>
     <div id="{{ str_replace('#', '', $editorConfig->container ?? 'editor') }}"></div>
-    
+
     @foreach ($editorConfig->getScripts() as $script)
         <script src="{{ $script }}"></script>
+    @endforeach
+
+    @foreach($editorConfig->getLocales() as $locale)
+        <script src="{{ $locale }}"></script>
     @endforeach
 </body>
 </html>

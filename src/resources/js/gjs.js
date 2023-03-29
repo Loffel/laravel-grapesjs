@@ -3,7 +3,7 @@ import pluginBlocks from 'grapesjs-blocks-basic';
 import 'grapesjs-blocks-bootstrap4';
 import CodeEditor from "./plugins/code-editor"
 import ExtraButtons from "./plugins/extra-buttons"
-import ImageEditor from "./plugins/image-editor"
+// import ImageEditor from "./plugins/image-editor"
 import CustomFontFamily from "./plugins/custom-font-family"
 import Loader from "./plugins/loader"
 import Notifications from "./plugins/notifications"
@@ -16,6 +16,9 @@ import BackgroundImage from "./plugins/background-image"
 import PluginsLoader from "./plugins/plugins-loader"
 import StyleEditor from "./plugins/style-editor"
 import LinkableImage from "./plugins/linkable-image"
+
+import grapesjsTouch from 'grapesjs-touch';
+import ImageEditor from 'grapesjs-tui-image-editor';
 
 let config = window.editorConfig;
 delete window.editorConfig;
@@ -54,7 +57,7 @@ plugins = [
 	BackgroundImage,
 	Loader,
 	Notifications,
-	CustomTypes,
+	// CustomTypes,
 	ExtraButtons,
 	SaveButton,
 	BackButton,
@@ -62,6 +65,7 @@ plugins = [
 	PluginsLoader,
 	StyleEditor,
 	LinkableImage,
+	grapesjsTouch,
 ]
 
 pluginsOpts = {
@@ -70,7 +74,7 @@ pluginsOpts = {
 	[CustomFontFamily]: {fonts: config.pluginManager.customFonts},
 	[Loader]: {},
 	[Notifications]: {},
-	[CustomTypes]: {},
+	// [CustomTypes]: {},
 	[ExtraButtons]: {},
 	[SaveButton]: {},
 	[BackButton]: {},
@@ -78,6 +82,7 @@ pluginsOpts = {
 	[PluginsLoader]: config.pluginManager.pluginsLoader,
 	[StyleEditor]: {},
 	[LinkableImage]: {},
+	[grapesjsTouch]: {},
 };
 
 config.plugins = plugins
@@ -97,6 +102,8 @@ config.storageManager.options.remote.onStore = (storeData, gEditor) => {
 		'styles': projectData.styles
 	}
 }
+
+config.showOffsets = true;
 
 window.grapeeditor = grapesjs.init(config);
 

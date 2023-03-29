@@ -4,7 +4,7 @@ export default (editor, opts = {}) => {
     btn_title: 'Edit code.',
     model: {
       title: 'Edit code',
-      message: 'Code chagnes Applied.',
+      message: 'Code changes Applied.',
       btn_text: 'Save',
     },
     ...opts
