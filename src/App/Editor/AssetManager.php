@@ -17,6 +17,7 @@ class AssetManager
     public int $openAssetsOnDrop = 0;
     public string $modalTitle = 'Upload Images';
     public bool $showUrlInput = false;
+    public ?string $deleteUrl;
 
     function __construct(AssetRepository $assetRepository)
     {
@@ -25,5 +26,6 @@ class AssetManager
         $this->uploadName = 'file';
 
         $this->assets = $assetRepository->getAllMediaLinks();
+        $this->deleteUrl = route('laravel-grapesjs.asset.delete');
     }
 }

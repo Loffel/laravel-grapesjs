@@ -82,4 +82,9 @@ class AssetController extends Controller
 
         return [$url, false];
     }
+
+    public function delete(Request $request, AssetRepository $assetRepository)
+    {
+        $assetRepository->delete($request->fileId);
+    }
 }

@@ -8,6 +8,7 @@ Route::prefix('laravel-grapesjs')
 	->namespace('Loffel\Grapesjs\App\Http\Controllers')
 	->group(function(){
 		Route::post('asset/store', 'AssetController@store')->name('asset.store');
+		Route::delete('asset/delete', 'AssetController@delete')->name('asset.delete');
 		Route::get('asset/proxy',  'AssetController@proxy')->name('asset.proxy');
 
 		Route::get('{model}/{editable}', 'EditorController@editor')->name('model.editor');

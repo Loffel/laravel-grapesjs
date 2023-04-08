@@ -16,6 +16,7 @@ import BackgroundImage from "./plugins/background-image"
 import PluginsLoader from "./plugins/plugins-loader"
 import StyleEditor from "./plugins/style-editor"
 import LinkableImage from "./plugins/linkable-image"
+import axios from 'axios';
 
 import grapesjsTouch from 'grapesjs-touch';
 import ImageEditor from 'grapesjs-tui-image-editor';
@@ -105,7 +106,17 @@ config.storageManager.options.remote.onStore = (storeData, gEditor) => {
 
 config.showOffsets = true;
 
+console.log(config)
+
 window.grapeeditor = grapesjs.init(config);
+
+window.grapeeditor.on('asset:remove', (asset) => {
+	axios.delete(config.assetManager.deleteUrl, {
+		data: {
+			fileId: asset.id
+		}
+	});
+})
 
 if(config.exposeApi){
 	Object.defineProperty(window, 'gjsEditor', {

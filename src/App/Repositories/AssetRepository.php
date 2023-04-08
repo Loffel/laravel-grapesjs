@@ -29,7 +29,7 @@ class AssetRepository
         return config('laravel-grapesjs.assets.upload_url') ?? route('laravel-grapesjs.asset.store');
     }
 
-    public function uploadSinglgeFile(UploadedFile $file)
+    public function uploadSingleFile(UploadedFile $file)
     {
         /**
          * Check if file is submitted by Image Editor Its name will be blob
@@ -54,9 +54,17 @@ class AssetRepository
         $uploaded_files = [];
 
         foreach ($files as $file) {
-            $uploaded_files[] = $this->uploadSinglgeFile($file);
+            $uploaded_files[] = $this->uploadSingleFile($file);
         }
 
         return $uploaded_files;
+    }
+
+    public function delete($fileId)
+    {
+        $filePath = substr($fileId, strpos($fileId, $this->diskPath));
+        if($this->storage->exists($filePath)) {
+            $this->storage->delete($filePath);
+        }
     }
 }
